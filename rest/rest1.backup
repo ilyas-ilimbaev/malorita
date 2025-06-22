@@ -1,0 +1,707 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.5
+-- Dumped by pg_dump version 17.5
+
+-- Started on 2025-06-22 23:54:38
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 217 (class 1259 OID 16390)
+-- Name: menuitem; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.menuitem (
+    id integer NOT NULL,
+    name character varying(20) NOT NULL,
+    price numeric(10,2) NOT NULL,
+    image text,
+    type_id integer,
+    description text,
+    availability boolean DEFAULT true
+);
+
+
+ALTER TABLE public.menuitem OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 16396)
+-- Name: menuitem_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.menuitem_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.menuitem_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4865 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: menuitem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.menuitem_id_seq OWNED BY public.menuitem.id;
+
+
+--
+-- TOC entry 219 (class 1259 OID 16397)
+-- Name: order_item; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.order_item (
+    id integer NOT NULL,
+    menuitem_id integer,
+    order_id integer
+);
+
+
+ALTER TABLE public.order_item OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 16400)
+-- Name: order_item_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.order_item_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.order_item_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4866 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: order_item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.order_item_id_seq OWNED BY public.order_item.id;
+
+
+--
+-- TOC entry 221 (class 1259 OID 16401)
+-- Name: orders; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orders (
+    id integer NOT NULL,
+    user_id integer,
+    type character varying(20) NOT NULL,
+    order_status character varying(50)
+);
+
+
+ALTER TABLE public.orders OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16404)
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.orders_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.orders_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4867 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 16405)
+-- Name: restinfo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.restinfo (
+    id integer NOT NULL,
+    name character varying(20) NOT NULL,
+    address text NOT NULL,
+    email character varying(20) NOT NULL,
+    phone character varying(15),
+    description text
+);
+
+
+ALTER TABLE public.restinfo OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 16410)
+-- Name: restinfo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.restinfo_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.restinfo_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4868 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: restinfo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.restinfo_id_seq OWNED BY public.restinfo.id;
+
+
+--
+-- TOC entry 225 (class 1259 OID 16411)
+-- Name: review; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.review (
+    id integer NOT NULL,
+    user_id integer,
+    date timestamp without time zone DEFAULT now(),
+    text text NOT NULL
+);
+
+
+ALTER TABLE public.review OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 16417)
+-- Name: review_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.review_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.review_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4869 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.review_id_seq OWNED BY public.review.id;
+
+
+--
+-- TOC entry 227 (class 1259 OID 16418)
+-- Name: typeitem; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.typeitem (
+    id integer NOT NULL,
+    name character varying(20) NOT NULL,
+    img text
+);
+
+
+ALTER TABLE public.typeitem OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 16421)
+-- Name: typeitem_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.typeitem_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.typeitem_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4870 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: typeitem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.typeitem_id_seq OWNED BY public.typeitem.id;
+
+
+--
+-- TOC entry 229 (class 1259 OID 16422)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    email character varying(150),
+    phone character varying(150),
+    password character varying(150) NOT NULL,
+    role character varying(150) NOT NULL,
+    login character varying(15) NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 230 (class 1259 OID 16427)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4871 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 4671 (class 2604 OID 16506)
+-- Name: menuitem id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.menuitem ALTER COLUMN id SET DEFAULT nextval('public.menuitem_id_seq'::regclass);
+
+
+--
+-- TOC entry 4673 (class 2604 OID 16507)
+-- Name: order_item id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.order_item ALTER COLUMN id SET DEFAULT nextval('public.order_item_id_seq'::regclass);
+
+
+--
+-- TOC entry 4674 (class 2604 OID 16508)
+-- Name: orders id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders ALTER COLUMN id SET DEFAULT nextval('public.orders_id_seq'::regclass);
+
+
+--
+-- TOC entry 4675 (class 2604 OID 16509)
+-- Name: restinfo id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.restinfo ALTER COLUMN id SET DEFAULT nextval('public.restinfo_id_seq'::regclass);
+
+
+--
+-- TOC entry 4676 (class 2604 OID 16510)
+-- Name: review id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.review ALTER COLUMN id SET DEFAULT nextval('public.review_id_seq'::regclass);
+
+
+--
+-- TOC entry 4678 (class 2604 OID 16511)
+-- Name: typeitem id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.typeitem ALTER COLUMN id SET DEFAULT nextval('public.typeitem_id_seq'::regclass);
+
+
+--
+-- TOC entry 4679 (class 2604 OID 16512)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 4846 (class 0 OID 16390)
+-- Dependencies: 217
+-- Data for Name: menuitem; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.menuitem (id, name, price, image, type_id, description, availability) FROM stdin;
+3	Сельдь "Малоритская"	12.00	3c9fbe93-a4bf-45c3-8f40-fa06cd1c3156.jpg	5	Филе сельди. Подается с жаренным картофелем	\N
+1	Куриный суп	12.00	aa7d8861-6f17-4077-b457-0b353933db99.jpg	2	Вкуснейший куриный суп который вы пробова_	\N
+5	Картофельная бабка	15.00	809a7b1e-0253-4fe9-80b3-44530e706046.jpg	6	Запекается в горшочке с рулькой	\N
+2	Клубничный кампот	5.00	4a9ffa10-37a6-4757-9843-718e787a8da1.jpg	1	Клубника + вода	\N
+4	Брауни	12.50	1fe7aabb-7a5c-486c-ae3a-95aa9ab51fa8.jpg	4	Брауни с мягкой карамелью	\N
+6	Колбаски вкусные	18.00	0292eba4-f2d3-4d59-82a7-e40b1fa94c07.jpg	6	Подаются с тушеной капустой	\N
+9	Чикенбургер	1.00	0f10408b-639b-452f-8adf-671a933a3920.jpg	7	Сочный куриный бургер с нежными наггетсами, хрустящим листовым салатом и пикантным сочетанием кетчупа с майонезом, сервированный на ароматной подрумяненной булочке с кунжутом.	t
+10	Салат Цезарь	2.00	32af21c7-372b-4c5b-8888-9060dbdee9fb.jpg	19	Оригинальный салат «Цезарь» с хрустящим салатом, поджаренными гренками с чесноком, сыром пармезан и нежным куриным филе, политый традиционным соусом.	t
+11	Греческий	12.00	29aa18ea-2f7e-4ef4-8363-042a97f510e9.jpg	19	Настоящий вкус Средиземноморья! Сочные овощи, солоноватая фета, ароматные оливки и пряная заправка – идеальный баланс свежести и насыщенного вкуса.	t
+\.
+
+
+--
+-- TOC entry 4848 (class 0 OID 16397)
+-- Dependencies: 219
+-- Data for Name: order_item; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.order_item (id, menuitem_id, order_id) FROM stdin;
+40	1	52
+\.
+
+
+--
+-- TOC entry 4850 (class 0 OID 16401)
+-- Dependencies: 221
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orders (id, user_id, type, order_status) FROM stdin;
+12	16	client	новый
+13	16	client	новый
+14	16	client	новый
+15	16	client	новый
+16	20	client	новый
+17	16	client	новый
+18	20	client	новый
+19	13	client	новый
+20	20	client	новый
+21	20	client	новый
+22	20	client	новый
+23	20	client	новый
+24	16	client	новый
+25	16	client	новый
+26	20	client	новый
+27	16	client	новый
+28	16	client	новый
+29	16	client	новый
+30	16	client	новый
+31	16	client	новый
+32	16	client	новый
+33	20	client	новый
+34	16	client	новый
+35	16	client	новый
+36	20	client	готов
+37	16	client	новый
+38	16	client	новый
+11	16	client	Готов
+39	16	client	новый
+40	35	client	новый
+41	16	client	новый
+8	13	waiter	готов к выдаче
+42	13	client	новый
+43	13	client	новый
+44	13	client	новый
+45	13	client	новый
+46	13	client	новый
+47	16	client	новый
+48	16	client	новый
+49	25	client	новый
+50	13	client	готов
+51	13	client	новый
+52	27	client	новый
+\.
+
+
+--
+-- TOC entry 4852 (class 0 OID 16405)
+-- Dependencies: 223
+-- Data for Name: restinfo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.restinfo (id, name, address, email, phone, description) FROM stdin;
+1	Малорита	ул. Лермонтова д. 11/А	malorita@mail.ru	+375298446589	Лучший ресторан Брестской области, в котором вы сможете попробовать то,  от чего вы будете в восторге !
+\.
+
+
+--
+-- TOC entry 4854 (class 0 OID 16411)
+-- Dependencies: 225
+-- Data for Name: review; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.review (id, user_id, date, text) FROM stdin;
+5	16	2024-12-13 00:32:06.627223	Отличный ресторан
+6	16	2024-12-13 05:19:22.023583	классный ресторанчик
+7	16	2024-12-13 09:05:54.058892	sdfasdf
+8	16	2024-12-13 12:10:29.788044	Мне понравилось
+9	16	2024-12-13 12:13:43.48142	Хороший интернет ресторан
+10	16	2024-12-13 12:17:13.354323	Уже лучше
+11	16	2024-12-13 12:28:01.433161	Все лучше и лучше)
+12	16	2024-12-13 14:56:19.463195	норм
+13	16	2024-12-15 20:05:10.068466	Класснооо
+14	16	2024-12-16 16:52:02.523648	игнат сказал ресторан хороший
+15	16	2025-01-09 16:57:19.07145	вапвап
+16	16	2025-01-09 17:01:16.527172	апып
+\.
+
+
+--
+-- TOC entry 4856 (class 0 OID 16418)
+-- Dependencies: 227
+-- Data for Name: typeitem; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.typeitem (id, name, img) FROM stdin;
+1	Напитки	1749057796932-drink.webp
+2	Супы	1749057812230-soups.webp
+4	Десерты	1749057823230-desserts.jpg
+5	Закуски	1749057837341-zakuski.jpg
+6	Горячие блюда	1749057851334-hot-dishes.jpg
+7	Бургеры	1749057866778-burgers.webp
+19	Салаты	1749063174123-salat.jpg
+\.
+
+
+--
+-- TOC entry 4858 (class 0 OID 16422)
+-- Dependencies: 229
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, email, phone, password, role, login) FROM stdin;
+13	user9@mail.ru	+375293234567	$2b$05$nhDm5gfJlQjJORwYA36Huejk9bKFMu7e7A6RMdT21bbx57xRskDo6	waiter	user9
+16	ka.datsik@gmail.com	+3752912345678	$2b$05$rv8RnkEzw85.Pezv8CMbfO1oftQ0b7vbUxQfKSvqccIb1uTUc8TtG	admin	kirill
+19	client@yandex.ru	+375291234567	$2b$05$yHV5xkNrDre0AOk1S2OmzuBGG8z6rskCv7.NrhrLe29yYX8la87.K	client	client
+20	usovic@gmail.com	+3752912345678	$2b$05$GWBQSPDtmEBuJ5RoG7P9aemBHe.2lKH./sH4teqAEHSLiGNRcH0oa	client	ignat
+23	user10@mail.ru	+375293234567	$2b$05$7mnK3AA7WBVxZjKGh55pSezwAAiXcpM7fM/Wjq/a0GKdwJioPOa7K	client	user10
+25	dfasdg	dfgsdfg	$2b$05$zqseDrAtnB5hG40Ssiq2dODOt1tdZ9mm8do88v1FLLVBf.yKIKLXe	client	user5
+26	1313	35135	$2b$05$yVpRcRRl1300Rws5zh/Sx.UgRe/sZNIPTA7s/UbPbUrgExMqPy9DO	client	user15
+27	user10@mail.ru	+375293234567	$2b$05$Gf/G1eQ4GJBonnzgZ5A/ZOgJBM2feMuDqj1MaC46pscffFR2oLQmq	client	user11
+28	akcna	iusc	$2b$05$/HHAdMO0B1n5QnNJLbTfJu0HafFZ2mFs7yVb8UKzCyYbekbxac2Ju	client	user777
+29	dfsjnk	fmmofm	$2b$05$vG8BxSd6jb/11LHMjVm/aOm4zJ0FuLavYUsFUg4Llo.VKbMs8kXYG	client	user888
+34	ignatusovic@gmail.com	80298518492	$2b$05$gM7zNXU4il.mPvhdWvEUleAuFkc8kJnnvpuqGnSS/6NqEBp6V2DxS	client	ignatus228
+35	kd.restcode@gmail.com	80298518492	$2b$05$biiHRduFckqdwUHBlyfk0uLXr7/OqAccPuUMBncg3WONqxO6y8bUm	client	kirillsdaga
+\.
+
+
+--
+-- TOC entry 4872 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: menuitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.menuitem_id_seq', 11, true);
+
+
+--
+-- TOC entry 4873 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: order_item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.order_item_id_seq', 40, true);
+
+
+--
+-- TOC entry 4874 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orders_id_seq', 52, true);
+
+
+--
+-- TOC entry 4875 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: restinfo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.restinfo_id_seq', 1, true);
+
+
+--
+-- TOC entry 4876 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.review_id_seq', 16, true);
+
+
+--
+-- TOC entry 4877 (class 0 OID 0)
+-- Dependencies: 228
+-- Name: typeitem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.typeitem_id_seq', 19, true);
+
+
+--
+-- TOC entry 4878 (class 0 OID 0)
+-- Dependencies: 230
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 35, true);
+
+
+--
+-- TOC entry 4681 (class 2606 OID 16436)
+-- Name: menuitem menuitem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.menuitem
+    ADD CONSTRAINT menuitem_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4683 (class 2606 OID 16438)
+-- Name: order_item order_item_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.order_item
+    ADD CONSTRAINT order_item_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4685 (class 2606 OID 16440)
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4687 (class 2606 OID 16442)
+-- Name: restinfo restinfo_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.restinfo
+    ADD CONSTRAINT restinfo_email_key UNIQUE (email);
+
+
+--
+-- TOC entry 4689 (class 2606 OID 16444)
+-- Name: restinfo restinfo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.restinfo
+    ADD CONSTRAINT restinfo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4691 (class 2606 OID 16446)
+-- Name: review review_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.review
+    ADD CONSTRAINT review_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4693 (class 2606 OID 16448)
+-- Name: typeitem typeitem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.typeitem
+    ADD CONSTRAINT typeitem_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4695 (class 2606 OID 16450)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4696 (class 2606 OID 16451)
+-- Name: menuitem menuitem_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.menuitem
+    ADD CONSTRAINT menuitem_type_id_fkey FOREIGN KEY (type_id) REFERENCES public.typeitem(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 4697 (class 2606 OID 16456)
+-- Name: order_item order_item_menuitem_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.order_item
+    ADD CONSTRAINT order_item_menuitem_id_fkey FOREIGN KEY (menuitem_id) REFERENCES public.menuitem(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 4698 (class 2606 OID 16461)
+-- Name: order_item order_item_order_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.order_item
+    ADD CONSTRAINT order_item_order_id_fkey FOREIGN KEY (order_id) REFERENCES public.orders(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 4699 (class 2606 OID 16466)
+-- Name: orders orders_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+--
+-- TOC entry 4700 (class 2606 OID 16471)
+-- Name: review review_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.review
+    ADD CONSTRAINT review_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+
+
+-- Completed on 2025-06-22 23:54:38
+
+--
+-- PostgreSQL database dump complete
+--
+

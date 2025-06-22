@@ -1,0 +1,11 @@
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" value={selectedOption} onChange={handleChange}>
+                            {user.selectedOrder.order_status || "Выберите тип"}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item value="Новый">Новый</Dropdown.Item>
+                            <Dropdown.Item value="В работе">В работе</Dropdown.Item>
+                            <Dropdown.Item value="Завершен">Завершен</Dropdown.Item>
+                            <Dropdown.Item value="Отменен">Отменен</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>

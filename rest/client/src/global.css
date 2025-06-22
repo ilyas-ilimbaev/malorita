@@ -1,0 +1,427 @@
+@font-face {
+    font-family: 'Caveat';
+    src: local('Caveat Bold'), local('Caveat-Bold'),
+        url('../src/fonts/caveat/Caveat-Bold.woff2') format('woff2'),
+        url('../src/fonts/caveat/Caveat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geologica';
+    src: local('Geologica Medium'), local('Geologica-Medium'),
+        url('../src/fonts/geologica/Geologica-Medium.woff2') format('woff2'),
+        url('../src/fonts/geologica/Geologica-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: local('Geologica Bold'), local('Geologica-Bold'),
+        url('../src/fonts/geologica/Geologica-Bold.woff2') format('woff2'),
+        url('../src/fonts/geologica/Geologica-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Geologica';
+    src: local('Geologica Black'), local('Geologica-Black'),
+        url('../src/fonts/geologica/Geologica-Black.woff2') format('woff2'),
+        url('../src/fonts/geologica/Geologica-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+        url('../src/fonts/montserrat/Montserrat-Bold.woff2') format('woff2'),
+        url('../src/fonts/montserrat/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Black'), local('Montserrat-Black'),
+        url('../src/fonts/montserrat/Montserrat-Black.woff2') format('woff2'),
+        url('../src/fonts/montserrat/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Medium'), local('Montserrat-Medium'),
+        url('../src/fonts/montserrat/Montserrat-Medium.woff2') format('woff2'),
+        url('../src/fonts/montserrat/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+        url('../src/fonts/montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../src/fonts/montserrat/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+.font-geologica {
+    font-family: 'Geologica';
+}
+.custContainerFlex {
+    width: 100%;
+    display: flex;
+    /* height: calc(100vh - 90px); */
+    align-items: center;
+}
+.custContainerFlex > .row {
+    flex-direction: column;
+    width: 100%;
+}
+.custContainerFlex .list-group-numbered>.list-group-item::before{
+    content: "";
+}
+.customWrap {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 90px);
+}
+nav.navbarCustom.navbar {
+    padding: 20px 0;
+}
+nav.navbarCustom.navbar .navbar-brand {
+    margin-right: 0;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 500;
+    color: #26643b;
+}
+nav.navbarCustom.navbar .navbar-nav .nav-link {
+    padding: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #26643b;
+}
+nav.navbarCustom.navbar .navbar-nav .btn.auth-btn, .card.about button.btn.leave {
+    position: relative;
+    padding: 14px;
+    line-height: 1;
+    color: #fff;
+    background-color: #26643b;
+    border-color: #26643b;
+    box-shadow: 0px 2px 8px 1px #849b8b;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+}
+nav.navbarCustom.navbar .navbar-nav .btn.auth-btn::after, .card.about button.btn.leave::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 5px 18px -9px #203221f5;
+    opacity: 0;
+    z-index: -1;
+}
+nav.navbarCustom.navbar .navbar-nav .btn.auth-btn:hover, .card.about button.btn.leave:hover{
+    box-shadow: none;
+}
+nav.navbarCustom.navbar .navbar-nav .btn.auth-btn:hover::after, .card.about button.btn.leave:hover::after{
+    opacity: 1;
+}
+.card.about {
+    padding-top: 20px;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+.about-text {
+    max-width: 500px;
+}
+.about-img {
+    border-radius: 20px;
+    box-shadow: 0px 9px 20px -7px #849b8b;
+    overflow: hidden;
+}
+.card.about .about-title{
+    font-family: 'Geologica';
+    font-size: 40px;
+    color: #3b413a;
+}
+.card.about p {
+    font-family: "Montserrat";
+}
+.card.about button.btn.more, a.booking-btn {
+    background-color: transparent;
+    font-weight: bold;
+    color: #26643b;
+}
+.card.about button.btn.more {
+    border:none;
+}
+a.booking-btn {
+    padding: 0 15px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    border: 1.5px solid #26643b;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.card.about button.btn.more:hover, a.booking-btn:hover {
+    background-color: transparent;
+}
+.cardInfo {
+    padding: 20px;
+    width: 20%;
+    min-width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #d6e5d8;
+}
+.cardInfo.col {
+    flex: none;
+}
+.cardInfo .text-muted svg{
+    width: 50px;
+    height: 50px;
+}
+.cardInfo .text-muted span{
+    display: block;
+}
+.cardInfo .text-muted strong {
+    font-size: 18px;
+}
+.cardInfo-wrap {
+    margin-top: auto;
+    flex-wrap: wrap;
+}
+.cardInfo .card-link {
+    color: inherit;
+    text-decoration: none;
+}
+/*menu*/
+.menuCard-list {
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.menuCard {
+    padding: 0;
+    width: calc(100% / 4 - 15px);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.menuCard-text {
+    margin-top: -20px;
+    padding: 20px 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #d6e5d8;
+    border-radius: 10px;
+}
+.menuCard-text h3 {
+    font-family: "Caveat";
+    font-size: 25px;
+}
+.menuCard-text p {
+    margin-bottom: 0;
+    font-family: "Montserrat";
+    font-size: 14px;
+}
+.menuBtn {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100px;
+    font-family: 'Geologica';
+    font-size: 20px;
+    border-color: #26643b;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    background-color: transparent;
+}
+.btn-custom, a.btn-custom, button.btn-custom {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    padding: 14px;
+    line-height: 1;
+    color: #fff;
+    text-decoration: none;
+    background-color: #26643b;
+    border: 2px solid #26643b;
+    box-shadow: 0px 2px 8px 1px #849b8b;
+    transition: all .3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+}
+.btn-custom:hover, a.btn-custom:hover, button.btn-custom:hover{
+    box-shadow: none;
+    background-color: transparent;
+    border-color: #26643b;
+    color: #26643b;
+}
+.btn-custom.--light {
+    margin-bottom: 0;
+    padding: 12px;
+    width: auto;
+    font-size: 16px;
+}
+/*list*/
+.types-swiper {
+    margin-top: 30px;
+}
+.types-swiper .swiper-button-next, .types-swiper .swiper-button-prev {
+    color: #26643b;
+}
+.customList {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: transparent;
+}
+.customList-item.active {
+    background-color: #d6e5d8;
+    border-color: #d6e5d8;
+    color: #3b413a;
+}
+.customList-item.active:hover {
+    background-color: #d6e5d8!important;
+    color: #3b413a;
+}
+.customList-item {
+    padding: 10px;
+    width: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 10px;
+    text-align: center;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.customList-item span {
+    font-family: 'Geologica';
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+}
+.menuListItem-img {
+    margin: 0 auto;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.menuListItem-img img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/*product card*/
+.productCard {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+.productCard-img {
+    padding: 0 35px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.productCard img {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.productCard-info {
+    margin-top: -50px;
+    padding: 20px 30px;
+    padding-top: 70px;
+    text-align: center;
+    background-color: #d6e5d8;
+    border-radius: 10px;
+}
+.productCard-info .card-title {
+    margin-bottom: 10px;
+    font-family: 'Geologica';
+    font-size: 28px;
+}
+.productCard-info p {
+    font-family: 'Caveat';
+    font-size: 24px;
+    line-height: 1;
+}
+.productCard-info h3.text-success {
+    margin-bottom: 0;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    line-height: 1;
+    color: #26643b !important;
+}
+.productCard-btn {
+    padding: 10px 20px;
+    font-family: 'Montserrat';
+    color: #fff;
+    background-color: #26643b;
+    border: none;
+    border-radius: 8px;
+}
+/*auth*/
+.authForm {
+    background-color: #d6e5d8;
+}
+.authForm  {
+    font-family: 'Geologica';
+}
+/*cusstomHeight*/
+.customHeight {
+    height: calc(100vh - 105px);
+}
+/*e*/
+.all-orders .card-title.h5 {
+    margin-bottom: 20px;
+    font-family: 'Geologica';
+}
+.all-orders .card-body .w-100.btn.btn-primary {
+    position: relative;
+    margin-top: 15px;
+    display: inline-block;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 18px;
+    padding: 10px;
+    line-height: 1;
+    color: #fff;
+    text-decoration: none;
+    background-color: #26643b;
+    border: 2px solid #26643b;
+    transition: all .3s ease-in-out;
+    border-radius: 8px;
+    z-index: 1;
+}
+.all-orders .card-body .card-text strong {
+    font-family: "Montserrat";
+    background-color: #4BB20B;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-weight: 500;
+    line-height: 1;
+}
+.all-orders .card-body .card-text strong.redBg{
+    background-color: #F53535;
+}

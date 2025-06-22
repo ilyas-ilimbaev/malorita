@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "53a7505b-6a2d-4ff0-930d-8921ae49539a",
+		"name": "Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39825063"
+	},
+	"item": [
+		{
+			"name": "Меню. Получить информацию из меню",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/item?typeId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"item"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "typeId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Меню. Получить позицию меню",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/item/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Меню. Удалить позицию меню",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5000/api/item/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Меню. Добавление позиции меню",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Клубничный кампот",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "typeId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Клубника + вода",
+							"type": "text"
+						},
+						{
+							"key": "availability",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/уник/страны/two.jpg"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/item"
+			},
+			"response": []
+		},
+		{
+			"name": "Отзывы. Отправить отзыв",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Отличный ресторан",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/review"
+			},
+			"response": []
+		},
+		{
+			"name": "Отзывы. Получить отзывы",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/review"
+			},
+			"response": []
+		},
+		{
+			"name": "Типы блюд. Создать",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Закуски",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/type"
+			},
+			"response": []
+		},
+		{
+			"name": "Типы блюд. Получить все",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/type"
+			},
+			"response": []
+		},
+		{
+			"name": "Типы блюд. Получить тип",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/type/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Типы блюд. Удалить тип",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5000/api/type/6"
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователи. Регистрация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"login\": \"user5\",\r\n    \"password\": \"111111\",\r\n    \"role\": \"client\",\r\n    \"email\": \"user5@mail.ru\",\r\n    \"phone\": \"+375291234567\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/user/registration"
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователи. Аутентификация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:5000/api/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователи. Авторизация",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/user/auth"
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователи. Получение всех пользователей",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Пользователи. Получение одного пользователя",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/user/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Информация. Добавление информации о ресторане",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Малорита",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "ул. Лермонтова д. 11/А",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "malorita@mail.ru",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "+375298446589",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Лучший ресторан Брестской области, в котором вы сможете попробовать то,  от чего вы будете в восторге !",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/info"
+			},
+			"response": []
+		},
+		{
+			"name": "Информация. Получение информации о ресторане",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/info"
+			},
+			"response": []
+		},
+		{
+			"name": "Заказы. Создать заказ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "client",
+							"type": "text"
+						},
+						{
+							"key": "order_status",
+							"value": "Принят",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/order"
+			},
+			"response": []
+		},
+		{
+			"name": "Заказы. Добавить блюдо в заказ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "menuitem_id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:5000/api/order/7"
+			},
+			"response": []
+		},
+		{
+			"name": "Заказы. Получить заказы",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "13",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/order?order_id=8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"order"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "13",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "client",
+							"disabled": true
+						},
+						{
+							"key": "order_id",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Заказы. Удалить блюдо из заказа",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5000/api/order/7"
+			},
+			"response": []
+		},
+		{
+			"name": "Заказы. Получить один заказ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/api/order/7"
+			},
+			"response": []
+		}
+	]
+}
