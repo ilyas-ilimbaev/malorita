@@ -29,7 +29,7 @@ const NavBar = observer(() => {
     return (
         <Navbar data-bs-theme="dark" className='navbarCustom'>
             <Container>
-                <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => navigate(REST_ROUTE)}>Ресторан "Малорита"</Navbar.Brand>
+                <Navbar.Brand style={{ cursor: 'pointer' }} onClick={() => navigate(REST_ROUTE)}>Калi ласка</Navbar.Brand>
                 <Nav className="m-auto">
                     <Nav.Link onClick={() => navigate(RESTINFO_ROUTE)}>О нас</Nav.Link>
                 </Nav>
