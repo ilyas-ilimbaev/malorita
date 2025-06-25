@@ -12,7 +12,7 @@ const RestInfo = () => {
 
     const restinfo = {
         id: 1,
-        name: "Малорита",
+        name: "Калi ласка",
         address: "ул. Лермонтова д. 11/А",
         email: "malorita@mail.ru",
         phone: "+375298446589",
@@ -52,7 +52,7 @@ const RestInfo = () => {
                 <Col md={5} className='d-flex about-img'> {/* Добавлены внутренние отступы */}
                     <Image
                         src={info}
-                        alt='Ресторан Малорита'
+                        alt='Калi ласка'
                         className='img-fluid rounded-start'
                     />
                 </Col>
