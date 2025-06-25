@@ -454,7 +454,7 @@ COPY public.orders (id, user_id, type, order_status) FROM stdin;
 --
 
 COPY public.restinfo (id, name, address, email, phone, description) FROM stdin;
-1	Малорита	ул. Лермонтова д. 11/А	malorita@mail.ru	+375298446589	Лучший ресторан Брестской области, в котором вы сможете попробовать то,  от чего вы будете в восторге !
+1	Калi ласка	ул. Лермонтова д. 11/А	malorita@mail.ru	+375298446589	Лучший ресторан Брестской области, в котором вы сможете попробовать то,  от чего вы будете в восторге !
 \.
 
 
